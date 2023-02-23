@@ -4,19 +4,9 @@ import {useState} from "react";
 
 
 
-const GoalList = () => {
-  const sampleGoals = [
-    "Faire les courses",
-    "Aller à la salle de sport 3 fois par semaine",
-    "Monter à plus de 5000m d altitude",
-    "Acheter mon premier appartement",
-    "Perdre 5 kgs",
-    "Gagner en productivité",
-    "Apprendre un nouveau langage",
-    "Faire une mission en freelance",
-    "Organiser un meetup autour de la tech",
-    "Faire un triathlon",
-  ];
+const GoalList = (props) => {
+
+  const {sampleGoals} = props;
   return(
   <FlatList
       contentContainerStyle={styles.goalList}
@@ -35,7 +25,8 @@ const Button = (props) => {
   );
 }
 
-  const InputGoal = () => {
+  const InputGoal = (props) => {
+  const { Goals, setGoals} = props;
   const [Text, setText] =  useState('');
 
   return(
@@ -48,18 +39,37 @@ const Button = (props) => {
         />
         <Button
         title={"Add"}
+        onPress = {() => {
+          setGoals([...Goals,Text])
+        }
+        }
         />
       </View>
   )
   }
 
 export default function App() {
+const [Goals, setGoals] = useState([
+  "Faire les courses",
+  "Aller à la salle de sport 3 fois par semaine",
+  "Monter à plus de 5000m d altitude",
+  "Acheter mon premier appartement",
+  "Perdre 5 kgs",
+  "Gagner en productivité",
+  "Apprendre un nouveau langage",
+  "Faire une mission en freelance",
+  "Organiser un meetup autour de la tech",
+  "Faire un triathlon",
+])
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputGoal />
-      <GoalList />
+      <InputGoal
+          Goals = {Goals}
+          setGoals={setGoals}/>
+      <GoalList
+          sampleGoals = {Goals}/>
     </View>
   );
 }
