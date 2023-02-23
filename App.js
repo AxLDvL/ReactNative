@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useState} from "react";
 
 const ListeCourse = () => {
@@ -24,16 +24,33 @@ const ListeCourse = () => {
 
   const InputGoal = () => {
   const [Text, setText] =  useState('');
+    const sampleGoals = [
+      "Faire les courses",
+      "Aller à la salle de sport 3 fois par semaine",
+      "Monter à plus de 5000m d altitude",
+      "Acheter mon premier appartement",
+      "Perdre 5 kgs",
+      "Gagner en productivité",
+      "Apprendre un nouveau langage",
+      "Faire une mission en freelance",
+      "Organiser un meetup autour de la tech",
+      "Faire un triathlon",
+    ];
+
   return(
-      <TextInput
-          style = {styles.input}
-        placeholder="add goal to the list"
-        onChangeText={newGoal => setText(newGoal)}
-        defaultValue = {Text}
-      />
+      <>
+        <TextInput
+            style = {styles.input}
+          placeholder="add goal to the list"
+          onChangeText={newGoal => setText(newGoal)}
+          defaultValue = {Text}
+        />
+        <FlatList data={sampleGoals}
+                  renderItem={({item}) => <Text>{item}</Text>}
+        />
+      </>
   )
   }
-
 
 export default function App() {
 
