@@ -1,35 +1,50 @@
 //import { StatusBar } from 'expo-status-bar';
 import {FlatList, Pressable, StatusBar, StyleSheet, Text, TextInput, View} from 'react-native';
-import {useState} from "react";
+import { useState} from "react";
 
-
-
-const GoalList = (props) => {
-
-  const {sampleGoals} = props;
-  return(
-  <FlatList
-      contentContainerStyle={styles.goalList}
-      data={sampleGoals}
-            renderItem={({item}) => <Text>{item}</Text>}
-  />
-  )
-  }
 
 const Button = (props) => {
-  const { onPress, title = 'Save' } = props;
+  const { onPress, title = 'Save',setBackgroundColor='' } = props;
   return (
-      <Pressable style={styles.button} onPress={onPress}>
+      <Pressable style={[styles.button,{backgroundColor: setBackgroundColor}]} onPress={onPress}>
         <Text style={styles.textButton}>{title}</Text>
       </Pressable>
   );
 }
+const GoalList = (props) => {
+
+  const { Goals, setGoals} = props;
+  return(
+  <FlatList
+      contentContainerStyle = {styles.goalList}
+      data = {Goals}
+            renderItem = {({item,index}) =>
+                <View style={styles.flatlist}>
+                  <Text key={index}>{item}</Text>
+                  <Button
+                    setBackgroundColor={'red'}
+                    title={'X'}
+                    onPress={() => {
+                        const newGoals = [...Goals];
+                        console.log({index});
+                        newGoals.splice({index},1);
+                        console.log(newGoals);
+                        return setGoals(newGoals)
+                    }
+                    }
+                  />
+                </View>
+  }
+  />
+  )
+  }
 
   const InputGoal = (props) => {
-  const { Goals, setGoals} = props;
-  const [Text, setText] =  useState('');
 
-  return(
+    const { Goals, setGoals} = props;
+    const [Text, setText] =  useState('');
+
+    return(
       <View style={styles.inputGoal}>
         <TextInput
             style = {styles.input}
@@ -39,28 +54,19 @@ const Button = (props) => {
         />
         <Button
         title={"Add"}
+        setBackgroundColor={'steelblue'}
         onPress = {() => {
-          setGoals([...Goals,Text])
+          setGoals([...Goals,Text]);
+          setText("");
         }
         }
         />
       </View>
-  )
+      )
   }
 
 export default function App() {
-const [Goals, setGoals] = useState([
-  "Faire les courses",
-  "Aller à la salle de sport 3 fois par semaine",
-  "Monter à plus de 5000m d altitude",
-  "Acheter mon premier appartement",
-  "Perdre 5 kgs",
-  "Gagner en productivité",
-  "Apprendre un nouveau langage",
-  "Faire une mission en freelance",
-  "Organiser un meetup autour de la tech",
-  "Faire un triathlon",
-])
+const [Goals, setGoals] = useState([])
 
   return (
     <View style={styles.container}>
@@ -69,7 +75,8 @@ const [Goals, setGoals] = useState([
           Goals = {Goals}
           setGoals={setGoals}/>
       <GoalList
-          sampleGoals = {Goals}/>
+          Goals = {Goals}
+          setGoals={setGoals}/>
     </View>
   );
 }
@@ -92,13 +99,15 @@ const styles = StyleSheet.create({
   },
   inputGoal:{
     marginVertical: 20,
-    flexDirection:'row'
+    flexDirection:'row',
+    justifyContent: 'center',
   },
   button: {
+    marginHorizontal:6,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     borderRadius: 8,
     elevation: 3,
     backgroundColor: 'steelblue',
@@ -111,8 +120,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   goalList:{
+    justifyContent: 'center',
 
-    justifyContent: 'center'
-  }
+  },
+    flatlist:{
+        flexDirection:'row',
+        justifyContent: 'center'
+    }
 
 });
