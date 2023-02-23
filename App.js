@@ -1,10 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import {useState} from "react";
+
+const ListeCourse = () => {
+  const sampleGoals = [
+    "Faire les courses",
+    "Aller à la salle de sport 3 fois par semaine",
+    "Monter à plus de 5000m d altitude",
+    "Acheter mon premier appartement",
+    "Perdre 5 kgs",
+    "Gagner en productivité",
+    "Apprendre un nouveau langage",
+    "Faire une mission en freelance",
+    "Organiser un meetup autour de la tech",
+    "Faire un triathlon",
+  ];
+  return (
+      sampleGoals.map(item =>{
+          return (<Text> {item} </Text>)
+        } )
+  )
+  }
+
+  const InputGoal = () => {
+  const [Text, setText] =  useState('');
+  return(
+      <TextInput
+          style = {styles.input}
+        placeholder="add goal to the list"
+        onChangeText={newGoal => setText(newGoal)}
+        defaultValue = {Text}
+      />
+  )
+  }
+
 
 export default function App() {
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <InputGoal/>
+      <ListeCourse/>
       <StatusBar style="auto" />
     </View>
   );
@@ -16,5 +52,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
+  input:{
+    paddingHorizontal: 8,
+    borderWidth: 4,
+    borderColor: '#20232a',
+    borderRadius: 6,
+    textAlign: 'center',
+    fontSize: 16,
+  }
+
 });
