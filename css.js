@@ -3,52 +3,89 @@ import {StyleSheet} from 'react-native';
 
 
 const styles = StyleSheet.create({
-container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-},
-input:{
-    marginRight:3,
-    paddingHorizontal: 8,
-    borderWidth: 3,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    textAlign: 'center',
-    fontSize: 16,
-},
-inputGoal:{
-    marginVertical: 20,
-    flexDirection:'row',
-    justifyContent: 'center',
-},
-button: {
-    marginHorizontal:6,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 8,
-    elevation: 3,
-    backgroundColor: 'steelblue',
-},
-textButton: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-},
-goalList:{
-    justifyContent: 'center',
+    container: {
+        flex: 1,
+    },
+    input:{
+        minWidth:250,
+        marginRight:3,
+        paddingHorizontal: 8,
+        borderWidth: 3,
+        borderColor: 'dimgray',
+        borderRadius: 6,
+        textAlign: 'center',
+        fontSize: 16,
+        backgroundColor: 'rgba(255,255,255,0.6)',
+    },
+    inputGoal:{
+        marginVertical: 20,
+        flexDirection:'row',
+        justifyContent: 'center',
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        borderRadius: 8,
+        elevation: 3,
+        backgroundColor: 'steelblue',
+    },
+    textButton: {
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+    },
+    goalList:{
 
-},
-flatlist:{
-    flexDirection:'row',
-    justifyContent: 'center'
+    },
+    flatlist:{
+        backgroundColor: 'rgba(255,255,255,0.6)',
+        borderRadius: 7,
+        flex:1,
+        marginHorizontal:40,
+        marginVertical: 5,
+        padding:5,
+        flexDirection:'row',
+        justifyContent: 'space-between',
+        alignItems:'center',
+    },
+    image:{
+        flex:1,
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+    },
+    modalView:{
+        margin: 20,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        }
+    },
+    modalText:{
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    buttonClose: {
+        backgroundColor: '#2196F3',
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    }
 }
-
-});
+);
 
 export default styles;

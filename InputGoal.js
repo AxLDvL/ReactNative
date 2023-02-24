@@ -13,7 +13,7 @@ const InputGoal = (props) => {
         <View style={styles.inputGoal}>
             <TextInput
                 style = {styles.input}
-                placeholder="add goal to the list"
+                placeholder="add goal "
                 onChangeText={newGoal => setText(newGoal)}
                 defaultValue = {Text}
             />
