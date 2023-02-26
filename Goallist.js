@@ -1,28 +1,34 @@
-import {FlatList, Text, View} from "react-native";
+import {FlatList, Pressable, Text} from "react-native";
 import styles from "./css";
-import Button from "./Button";
 
 
 const GoalList = (props) => {
 
     const { Goals, setModalVisible, setSelectedItem} = props;
+
+    const androidRipple = {
+        color: 'steelblue',
+        borderless: false,
+        radius: 200
+    };
+
     return(
         <FlatList
             contentContainerStyle = {styles.goalList}
             data = {Goals}
             renderItem = {({item,index}) =>
-                <View style={styles.flatlist}>
-                    <Text key={index}>{item}</Text>
-                    <Button
-                        setBackgroundColor={'red'}
-                        title={'X'}
-                        onPress={() => {
-                            setModalVisible(true);
-                            setSelectedItem(index);
-                        }
-                        }
-                    />
-                </View>
+
+                    <Pressable style={[styles.flatlist,{elevation:3}]}
+                               onPress={() => {
+                                   setModalVisible(true);
+                                   setSelectedItem(index);
+                               }
+                               }
+                               android_ripple={androidRipple}
+                    >
+                        <Text key={index}>{item}</Text>
+                    </Pressable>
+
             }
         />
     )

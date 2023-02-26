@@ -1,4 +1,4 @@
-import {Alert, Modal, Text, View} from "react-native";
+import {Alert, Modal, TextInput, View} from "react-native";
 import styles from "./css";
 import Button from "./Button";
 
@@ -6,6 +6,10 @@ import Button from "./Button";
 
 const DisplayModale = (props) => {
     const {Goals, setGoals,SelectedItem,modalVisible, setModalVisible} =props;
+    const handleModalDismiss = () => {
+        setModalVisible(false);
+    }
+    let goalModified;
 
     return(
         <Modal
@@ -15,26 +19,49 @@ const DisplayModale = (props) => {
             onRequestClose={() => {
                 Alert.alert('Modal has been closed.');
                 setModalVisible(!modalVisible);
-            }}>
+            }}
+            onDismiss={handleModalDismiss}
+        >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Text style={styles.modalText}>Es tu sûr de vouloir supprimer cet objectif ?</Text>
+                    <View style = {{alignSelf: 'stretch',alignItems:'flex-end'}}>
+                        <Button
+                            style = {{borderRadius:1}}
+                            title = 'X'
+                            setBackgroundColor = 'red'
+                            onPress={() => handleModalDismiss()}
+                        />
+                    </View>
+                   <TextInput
+                        style = {[styles.input,{marginVertical:10}]}
+                        onChangeText={editGoal => goalModified = editGoal}
+                        defaultValue={Goals[SelectedItem]}
+                    />
+                    <View style={{flexDirection:'row',alignSelf: 'stretch',justifyContent:'flex-end'}}>
                     <Button
-                        title = 'Supprimer'
-                        setBackgroundColor = 'springgreen'
+                        title = 'Delete'
+                        setBackgroundColor = 'dimgrey'
                         onPress={() => {
                             const newGoals = [...Goals];
                             newGoals.splice(SelectedItem,1);
                             setGoals(newGoals);
-                            setModalVisible(!modalVisible);
+                            handleModalDismiss();
 
                         }}
                     />
                     <Button
-                        title = 'Retour'
+
+                        title = 'Edit'
                         setBackgroundColor = 'dimgrey'
-                        onPress={() => setModalVisible(!modalVisible)}
+                        onPress={() => {
+                            const newGoals = [...Goals];
+                            newGoals[SelectedItem] = goalModified;
+                            setGoals(newGoals);
+                            handleModalDismiss()
+                        }}
                     />
+
+                    </View>
                 </View>
             </View>
         </Modal>

@@ -6,6 +6,7 @@ import InputGoal from "./InputGoal";
 import DisplayModale from "./DisplayModale";
 
 
+
 export default function App() {
 
     const [Goals, setGoals] = useState([]);
@@ -22,11 +23,13 @@ export default function App() {
                     SelectedItem = {SelectedItem}
                     modalVisible = {modalVisible}
                     setModalVisible = {setModalVisible}
+
                 />
                 <InputGoal
                     Goals = {Goals}
                     setGoals={setGoals}/>
                 <GoalList
+                    setGoals = {setGoals}
                     Goals = {Goals}
                     setModalVisible={setModalVisible}
                     setSelectedItem = {setSelectedItem}

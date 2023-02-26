@@ -1,8 +1,7 @@
 import {useState} from "react";
-import {TextInput, View} from "react-native";
+import { TextInput, View} from "react-native";
 import styles from "./css";
 import Button from "./Button";
-
 
 const InputGoal = (props) => {
 
@@ -11,12 +10,14 @@ const InputGoal = (props) => {
 
     return(
         <View style={styles.inputGoal}>
-            <TextInput
-                style = {styles.input}
-                placeholder="add goal "
-                onChangeText={newGoal => setText(newGoal)}
-                defaultValue = {Text}
-            />
+
+                <TextInput
+                    style = {styles.input}
+                    placeholder="add goal "
+                    onChangeText={newGoal => setText(newGoal)}
+                    defaultValue = {Text}
+                />
+
             <Button
                 title={"Add"}
                 setBackgroundColor={'steelblue'}
@@ -26,6 +27,7 @@ const InputGoal = (props) => {
                 }
                 }
             />
+
         </View>
     )
 }

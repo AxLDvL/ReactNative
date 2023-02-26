@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
     input:{
         minWidth:250,
-        marginRight:3,
+
         paddingHorizontal: 8,
         borderWidth: 3,
         borderColor: 'dimgray',
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     button: {
+        marginLeft:5,
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 5,
@@ -43,14 +44,16 @@ const styles = StyleSheet.create({
     },
     flatlist:{
         backgroundColor: 'rgba(255,255,255,0.6)',
-        borderRadius: 7,
+        borderRadius: 2,
         flex:1,
         marginHorizontal:40,
         marginVertical: 5,
-        padding:5,
+        paddingHorizontal:15,
+        paddingVertical: 5,
         flexDirection:'row',
         justifyContent: 'space-between',
         alignItems:'center',
+
     },
     image:{
         flex:1,
@@ -59,13 +62,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
+        marginTop: 15,
     },
     modalView:{
         margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
-        padding: 35,
+        padding: 20,
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
