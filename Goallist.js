@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const GoalList = (props) => {
 
-    const { Goals, setModalVisible} = props;
+    const { Goals, setModalVisible, setSelectedItem} = props;
     return(
         <FlatList
             contentContainerStyle = {styles.goalList}
@@ -17,7 +17,8 @@ const GoalList = (props) => {
                         setBackgroundColor={'red'}
                         title={'X'}
                         onPress={() => {
-                            return setModalVisible(true)
+                            setModalVisible(true);
+                            setSelectedItem(index);
                         }
                         }
                     />
