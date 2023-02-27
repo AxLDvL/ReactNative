@@ -9,7 +9,7 @@ const DisplayModale = (props) => {
     const handleModalDismiss = () => {
         setModalVisible(false);
     }
-    let goalModified;
+    let goalModified = Goals[SelectedItem];
 
     return(
         <Modal
@@ -54,7 +54,7 @@ const DisplayModale = (props) => {
                         title = 'Edit'
                         setBackgroundColor = 'dimgrey'
                         onPress={() => {
-                            goalModified = Goals[SelectedItem];
+                            
                             const newGoals = [...Goals];
                             newGoals[SelectedItem] = goalModified;
                             setGoals(newGoals);
