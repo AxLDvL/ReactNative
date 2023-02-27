@@ -54,6 +54,7 @@ const DisplayModale = (props) => {
                         title = 'Edit'
                         setBackgroundColor = 'dimgrey'
                         onPress={() => {
+                            goalModified = Goals[SelectedItem];
                             const newGoals = [...Goals];
                             newGoals[SelectedItem] = goalModified;
                             setGoals(newGoals);
